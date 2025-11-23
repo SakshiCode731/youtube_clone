@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dummy HTML Page</title>
+  <style>
+    :root{--accent:#2563eb;--muted:#6b7280}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;line-height:1.5;color:#111}
+    header{background:linear-gradient(90deg,#f8fafc,#ffffff);border-bottom:1px solid #e6edf6;padding:1rem 2rem}
+    .container{max-width:980px;margin:0 auto}
+    nav{display:flex;gap:1rem;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .hero{padding:2.5rem 0}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .card{padding:1rem;border:1px solid #eef2ff;border-radius:10px;background:#fff}
+    form{display:flex;flex-direction:column;gap:.5rem}
+    input,textarea,select{padding:.6rem;border:1px solid #d1d5db;border-radius:6px}
+    button{background:var(--accent);color:white;padding:.6rem .9rem;border:0;border-radius:8px;cursor:pointer}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:.6rem;border:1px solid #e6eef8;text-align:left}
+    footer{padding:1.2rem 0;margin-top:2rem;background:#f8fafc;color:var(--muted)}
+    .img-placeholder{width:100%;height:160px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#eef2ff;color:var(--accent)}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <strong>XYZ</strong>
+        <div style="flex:1"></div>
+        <a href="#features">Features</a>
+        <a href="#form">Contact</a>
+        <a href="#data">Data</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Dummy HTML Page</h1>
+      <p style="color:var(--muted)">A small, ready-to-edit HTML template with components you can reuse for testing and demos.</p>
+    </section>
+
+    <section id="features" class="grid">
+      <div class="card">
+        <h3>Feature One</h3>
+        <p style="color:var(--muted)">Short description of the feature with a couple of example bullets.</p>
+        <ul>
+          <li>Responsive layout</li>
+          <li>Form & table examples</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Quick Preview</h3>
+        <div class="img-placeholder">SVG Placeholder</div>
+      </div>
+    </section>
+
+    <section id="form" style="margin-top:1rem">
+      <div class="card">
+        <h3>Contact / Demo Form</h3>
+        <form id="demoForm">
+          <label>Name <input type="text" name="name" placeholder="Your name" required></label>
+          <label>Email <input type="email" name="email" placeholder="you@example.com" required></label>
+          <label>Message <textarea name="message" rows="4" placeholder="Tell us something..."></textarea></label>
+          <label>Choose option
+            <select name="option">
+              <option>Option A</option>
+              <option>Option B</option>
+            </select>
+          </label>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <button type="submit">Send</button>
+            <button type="button" id="resetBtn">Reset</button>
+          </div>
+        </form>
+        <p id="formResult" style="color:var(--muted);margin-top:.6rem"></p>
+      </div>
+    </section>
+
+    <section id="data" style="margin-top:1rem">
+      <div class="card">
+        <h3>Sample Data Table</h3>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Name</th><th>Status</th></tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr><td>1</td><td>Alpha</td><td>Active</td></tr>
+            <tr><td>2</td><td>Beta</td><td>Pending</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:.6rem">
+          <button id="addRow">Add Row</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">© XYZ — Dummy HTML for learning and testing.</div>
+  </footer>
+
+  <script>
+    // Simple interactions for demo/testing
+    const form = document.getElementById('demoForm');
+    const result = document.getElementById('formResult');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = new FormData(form);
+      result.textContent = `Thanks, ${data.get('name') || 'friend'} — we got your message.`;
+      form.reset();
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      form.reset(); result.textContent = '';
+    });
+
+    document.getElementById('addRow').addEventListener('click', () => {
+      const tbody = document.getElementById('tableBody');
+      const next = tbody.rows.length + 1;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${next}</td><td>Item ${next}</td><td>New</td>`;
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>
