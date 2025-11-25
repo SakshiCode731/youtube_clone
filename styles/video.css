@@ -6,8 +6,8 @@
        margin-top: 0;
        font-size: 14px;
        font-weight: 500;  /* <!-- Bold -- 700, medium- 500 */
-       line-height: 21px;
-       margin-bottom: 12px;
+       line-height: 20px;
+       margin-bottom: 10px;
       }
     
      .video-info-grid{
@@ -16,11 +16,12 @@
      }
      
      .profile-picture{
-      width: 40px;
+      width: 36px;
       border-radius: 50px;
      }
-     .thumbnails-row{
-      margin-bottom:12px ;
+     .thumbnail-row{
+      margin-bottom:8px ;
+      position: relative;
      }
      .video-author,
      .video-stats{
@@ -35,4 +36,41 @@
       grid-template-columns: 1fr 1fr 1fr;
       column-gap: 16px;
       row-gap: 40px;
+     }
+
+    @media (max-width:750px){ /* css actvate only when screen size 750 or less than */
+      .video-grid{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width:751) and (max-width:999px){
+       .video-grid{
+        grid-template-columns: 1fr 1fr 1fr;
+       }
+    }
+
+    @media (min-width:1000px){
+      .video-grid{
+        grid-template-columns: 1fr 1fr 1fr 1fr ;
+      }
+    }
+
+   
+
+     .video-time{
+      font-family: Roboto, Arial;
+      font-size: 12px;
+      font-weight: 500;
+      /* padding-left: 4px;
+      padding-right: 4px;
+      padding-top: 4px;
+      padding-bottom: 4px; */
+      padding: 4px ;
+      border-radius: 2px;
+      background-color: black;
+      color: white;
+      position: absolute;
+      bottom: 8px;
+      right: 5px;
      }
